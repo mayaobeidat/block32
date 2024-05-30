@@ -11,7 +11,6 @@ client.connect()
 // get all ice cream flavors 
 router.get('/', async(req, res, next)=>{
     try{
-        console.log("GET RES", res)
         const response = await client.query(`SELECT * FROM flavors ORDER BY id ASC`);
         res.send(response.rows)
     }catch(err){
@@ -50,7 +49,6 @@ router.post('/', async(req, res, next) =>{
             name: req.body.name,
             is_favorite: req.body.is_favorite,
         })
-        console.log("req HERE", req.body)
     } catch(err){
         next(err)
     }
